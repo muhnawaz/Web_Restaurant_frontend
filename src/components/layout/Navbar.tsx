@@ -37,14 +37,18 @@ export default function Navbar() {
           "flex items-center justify-between",
         ].join(" ")}
       >
-        {/* Logo */}
+        {/* Logo (solid color = guaranteed visible) */}
         <motion.div {...hoverLift}>
           <NavLink
             to="/"
             aria-label="AKIR — Home"
-            className="font-black tracking-widest select-none bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent drop-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded-md"
+            className="font-black tracking-[0.08em] select-none text-amber-300 drop-shadow
+                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded-md"
           >
-            <span className="text-2xl md:text-4xl leading-none">AKIR Restaurant</span>
+            {/* block + safe line-height so tall glyphs never crop */}
+            <span className="block leading-[1.05]">
+              <span className="text-2xl md:text-4xl">AKIR&nbsp;RESTAURANT</span>
+            </span>
           </NavLink>
         </motion.div>
 
