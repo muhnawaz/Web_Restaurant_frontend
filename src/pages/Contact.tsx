@@ -1,48 +1,55 @@
 // src/pages/Contact.tsx
-import { useState } from 'react';
-import { postJSON } from '@/lib/api';
-import { toast } from 'sonner';
+import { useState } from "react";
+import Notice from "@/components/Notice";
+import { postJSON } from "@/lib/api";
 
-type ContactReq = {
-  name: string;
-  email: string;
-  subject?: string;
-  message: string;
-};
+type Req = { name: string; email: string; subject?: string; message: string };
+type Res = { success: boolean; message?: string };
 
-type ContactRes = { success: boolean; message?: string };
+const SPAM_HINT =
+  "Heads up: our reply sometimes lands in Spam/Promotions. Please check there if you don't see it in your inbox.";
 
 export default function Contact() {
-  const [form, setForm] = useState<ContactReq>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [form, setForm] = useState<Req>({ name: "", email: "", subject: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
   };
 
+  function validate(): string | null {
+    if (!form.name.trim()) return "Please enter your name.";
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) return "Please enter a valid email address.";
+    if (!form.message.trim()) return "Please enter a message.";
+    return null;
+  }
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim()) return toast.error('Please enter your name.');
-    if (!/^\S+@\S+\.\S+$/.test(form.email)) return toast.error('Please enter a valid email.');
-    if (!form.message.trim()) return toast.error('Please write a message.');
+    setErrorMsg(null);
+    setSuccessMsg(null);
 
+    const v = validate();
+    if (v) {
+      setErrorMsg(v);
+      return;
+    }
     setLoading(true);
     try {
-      const res = await postJSON<ContactRes>('/api/contact', form);
-      if (res.success) {
-        toast.success('Message sent! We’ll get back to you soon.');
-        setForm({ name: '', email: '', subject: '', message: '' });
+      const data = await postJSON<Res>("/api/contact", form);
+      if (data?.success) {
+        setSuccessMsg("Message sent! " + SPAM_HINT);
+        setForm({ name: "", email: "", subject: "", message: "" });
       } else {
-        toast.error(res.message || 'Failed to send message.');
+        setErrorMsg(data?.message || "Failed to send message.");
       }
     } catch (err: any) {
-      toast.error(err?.message || 'Network error. Please try again.');
+      setErrorMsg(err?.message || "Network error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -51,39 +58,44 @@ export default function Contact() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-10 text-zinc-100">
       <h1 className="mb-6 text-3xl font-semibold text-amber-300">Contact Us</h1>
+
+      {errorMsg && <Notice kind="error">{errorMsg}</Notice>}
+      {successMsg && <Notice kind="success">{successMsg}</Notice>}
+      <Notice kind="info">{SPAM_HINT}</Notice>
+
       <form onSubmit={submit} className="grid gap-4">
         <div className="grid gap-1">
-          <label htmlFor="ct-name" className="text-sm text-zinc-300">Name</label>
-          <input id="ct-name" className="rounded-md bg-zinc-800 px-3 py-2"
-                 name="name" value={form.name} onChange={onChange}
-                 autoComplete="name" required />
+          <label htmlFor="c-name" className="text-sm text-zinc-300">Name</label>
+          <input id="c-name" name="name" className="rounded-md bg-zinc-800 px-3 py-2"
+            value={form.name} onChange={onChange} required />
         </div>
 
         <div className="grid gap-1">
-          <label htmlFor="ct-email" className="text-sm text-zinc-300">Email</label>
-          <input id="ct-email" className="rounded-md bg-zinc-800 px-3 py-2"
-                 type="email" name="email" value={form.email} onChange={onChange}
-                 autoComplete="email" required />
+          <label htmlFor="c-email" className="text-sm text-zinc-300">Email</label>
+          <input id="c-email" type="email" name="email" className="rounded-md bg-zinc-800 px-3 py-2"
+            value={form.email} onChange={onChange} required />
         </div>
 
         <div className="grid gap-1">
-          <label htmlFor="ct-subject" className="text-sm text-zinc-300">Subject (optional)</label>
-          <input id="ct-subject" className="rounded-md bg-zinc-800 px-3 py-2"
-                 name="subject" value={form.subject} onChange={onChange}
-                 autoComplete="off" />
+          <label htmlFor="c-subject" className="text-sm text-zinc-300">Subject (optional)</label>
+          <input id="c-subject" name="subject" className="rounded-md bg-zinc-800 px-3 py-2"
+            value={form.subject} onChange={onChange} />
         </div>
 
         <div className="grid gap-1">
-          <label htmlFor="ct-message" className="text-sm text-zinc-300">Message</label>
-          <textarea id="ct-message" className="rounded-md bg-zinc-800 px-3 py-2"
-                    rows={5} name="message" value={form.message} onChange={onChange}
-                    autoComplete="off" required />
+          <label htmlFor="c-message" className="text-sm text-zinc-300">Message</label>
+          <textarea id="c-message" name="message" rows={5}
+            className="rounded-md bg-zinc-800 px-3 py-2"
+            value={form.message} onChange={onChange} required />
         </div>
 
-        <button type="submit" disabled={loading}
-                className="mt-2 rounded-xl bg-amber-400/20 px-4 py-2 font-semibold text-amber-300 ring-1 ring-amber-400/30 hover:bg-amber-400/30 disabled:opacity-60"
-                aria-busy={loading}>
-          {loading ? 'Sending…' : 'Send Message'}
+        <button
+          type="submit"
+          disabled={loading}
+          className="mt-2 rounded-xl bg-amber-400/20 px-4 py-2 font-semibold text-amber-300 ring-1 ring-amber-400/30 hover:bg-amber-400/30 disabled:opacity-60"
+          aria-busy={loading}
+        >
+          {loading ? "Sending…" : "Send Message"}
         </button>
       </form>
     </div>

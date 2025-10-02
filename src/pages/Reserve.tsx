@@ -1,4 +1,6 @@
+// src/pages/Reserve.tsx
 import { useMemo, useState } from "react";
+import Notice from "@/components/Notice";
 import { postJSON } from "@/lib/api";
 
 type ReservationReq = {
@@ -10,12 +12,10 @@ type ReservationReq = {
   guests: number;
   specialRequests?: string;
 };
+type ReservationRes = { success: boolean; message?: string; reservationId?: string };
 
-type ReservationRes = {
-  success: boolean;
-  message?: string;
-  reservationId?: string;
-};
+const SPAM_HINT =
+  "Heads up: our email sometimes lands in Spam/Promotions. Please check there if you don't see it in your inbox.";
 
 export default function Reserve() {
   const [form, setForm] = useState<ReservationReq>({
@@ -50,7 +50,6 @@ export default function Reserve() {
     }));
   };
 
-  // simple client-side validation to avoid 400
   function validate(): string | null {
     if (!form.name.trim()) return "Please enter your name.";
     if (!/^\S+@\S+\.\S+$/.test(form.email)) return "Please enter a valid email address.";
@@ -78,7 +77,7 @@ export default function Reserve() {
     try {
       const data = await postJSON<ReservationRes>("/api/reservations", form);
       if (data?.success) {
-        setSuccessMsg("Reservation request sent! Please check your email.");
+        setSuccessMsg("Reservation request sent! " + SPAM_HINT);
         setForm({
           name: "",
           email: "",
@@ -102,17 +101,11 @@ export default function Reserve() {
     <div className="mx-auto max-w-2xl px-4 py-10 text-zinc-100">
       <h1 className="mb-6 text-3xl font-semibold text-amber-300">Reserve a Table</h1>
 
-      {/* status banners (site UI only, no browser alert) */}
-      {errorMsg && (
-        <div className="mb-4 rounded-md bg-red-900/30 p-3 text-red-200 ring-1 ring-red-800/40">
-          {errorMsg}
-        </div>
-      )}
-      {successMsg && (
-        <div className="mb-4 rounded-md bg-emerald-900/30 p-3 text-emerald-200 ring-1 ring-emerald-800/40">
-          {successMsg}
-        </div>
-      )}
+      {/* status banners */}
+      {errorMsg && <Notice kind="error">{errorMsg}</Notice>}
+      {successMsg && <Notice kind="success">{successMsg}</Notice>}
+      {/* Always-visible FYI */}
+      <Notice kind="info">{SPAM_HINT}</Notice>
 
       <form onSubmit={submit} className="grid gap-4">
         <div className="grid gap-1">
