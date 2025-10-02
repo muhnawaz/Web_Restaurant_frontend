@@ -1,7 +1,7 @@
 import { useState } from "react";
 // if you want toasts: import { toast } from "sonner";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+const API_URL = import.meta.env.VITE_API_URL || "https://web-restaurant-backend-rexh.onrender.com";
 
 export default function Reserve() {
   const [form, setForm] = useState({

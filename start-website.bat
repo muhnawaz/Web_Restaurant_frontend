@@ -14,7 +14,7 @@ timeout /t 8 /nobreak > nul
 
 echo.
 echo 🎉 AKIR Restaurant Website is ready!
-echo 📍 URL: http://localhost:5174
+echo 📍 URL: https://web-restaurant-backend-rexh.onrender.com
 echo.
 echo 📧 Email notifications: akirrestaurants@gmail.com
 echo 📞 Phone: 9391885317
@@ -23,4 +23,4 @@ echo.
 echo Press any key to open website...
 pause > nul
 
-start http://localhost:5174
+start https://web-restaurant-backend-rexh.onrender.com

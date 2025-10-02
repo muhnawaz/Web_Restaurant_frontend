@@ -5,7 +5,7 @@
 ### **Option 1: Double-click the script**
 1. Find the file `start-website.sh` in your project folder
 2. Double-click it to run
-3. The website will open automatically at `http://localhost:5174`
+3. The website will open automatically at `https://web-restaurant-backend-rexh.onrender.com`
 
 ### **Option 2: Run from terminal**
 ```bash
@@ -28,7 +28,7 @@ npm run dev
 ```
 
 ### **Step 3: Open Website**
-- Go to: `http://localhost:5174`
+- Go to: `https://web-restaurant-backend-rexh.onrender.com`
 - Or click the link that appears in terminal
 
 ---
@@ -70,7 +70,7 @@ npm run dev
 2. **Navigate to the project folder**
 3. **Run**: `./start-website.sh`
 4. **Wait for "Website is ready!" message**
-5. **Click the link or go to**: `http://localhost:5174`
+5. **Click the link or go to**: `https://web-restaurant-backend-rexh.onrender.com`
 
 ### **That's it! The website is now running! 🎉**
 

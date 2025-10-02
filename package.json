@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -r -s first -n FRONTEND,BACKEND -c green,blue \"vite --port 5175 --host\" \"npm --prefix backend run dev\"",
+    "dev": "vite --port 5175 --host",
     "dev:frontend": "vite --port 5175 --host",
     "dev:backend": "npm --prefix backend run dev",
     "build": "vite build",
@@ -13,7 +13,7 @@
     "preview": "vite preview --port 5175 --host",
     "start:backend": "npm --prefix backend start",
     "start": "npm run dev",
-    "open": "open http://localhost:5175"
+    "open": "open https://web-restaurant-backend-rexh.onrender.com"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

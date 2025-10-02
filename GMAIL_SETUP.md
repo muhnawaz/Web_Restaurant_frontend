@@ -54,7 +54,7 @@ npm start
 ## ✅ **Testing Email Functionality**
 
 ### Test Reservation Email
-1. Go to your website: `http://localhost:3000`
+1. Go to your website: `https://web-restaurant-backend-rexh.onrender.com`
 2. Fill out the reservation form
 3. Submit the form
 4. Check your Gmail inbox for:

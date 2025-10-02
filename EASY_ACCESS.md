@@ -28,7 +28,7 @@ npm start
 
 ### **Option 1: Local URL**
 ```
-http://localhost:5174
+https://web-restaurant-backend-rexh.onrender.com
 ```
 
 ### **Option 2: Custom Domain (Advanced)**
@@ -59,7 +59,7 @@ http://localhost:5174
 1. **Check**: Are both servers running?
 2. **Run**: `./start-website.sh`
 3. **Wait**: For "Website is ready!" message
-4. **Try**: `http://localhost:5174`
+4. **Try**: `https://web-restaurant-backend-rexh.onrender.com`
 
 ### **If bookmark doesn't work:**
 1. **Make sure**: Servers are running first
@@ -85,4 +85,4 @@ http://localhost:5174
 - **Phone**: 9391885317
 - **Email**: akirrestaurants@gmail.com
 - **Address**: Benz Circle, Patamata Lanka, Vijayawada - 520010
-- **Website**: http://localhost:5174
+- **Website**: https://web-restaurant-backend-rexh.onrender.com
