@@ -42,7 +42,7 @@ export function MenuSection() {
         "Our chef's masterpieces, crafted with authentic South Indian spices",
       image: signatureDish,
       items: [
-        { name: "Malabar Fish Curry", price: "₹3500", description: "Fresh catch in coconut curry with Kodampuli" },
+        { name: "Malabar Fish Curry", price: "₹350", description: "Fresh catch in coconut curry with Kodampuli" },
         { name: "Potlam Biryani",     price: "₹400", description: "Fragrant basmati rice with tender mutton and saffron" },
         { name: "Chettinad Chicken",  price: "₹300", description: "Spicy Tamil specialty with roasted spices and curry leaves" },
       ],
